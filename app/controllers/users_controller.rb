@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    redirect_to dashboard_path if logged_in?
     @user = User.new
   end
 
@@ -8,9 +9,11 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to "/dashboard"
+      flash[:notice] = "Account created successfully! Welcome, #{@user.email}!"
+      redirect_to dashboard_path
     else
-      render :new
+      flash.now[:alert] = "There were errors creating your account."
+      render :new, status: :unprocessable_entity
     end
   end
 
