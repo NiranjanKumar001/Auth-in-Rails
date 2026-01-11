@@ -11,10 +11,54 @@
       <p><strong>Account created:</strong> <%= @user.created_at.strftime("%B %d, %Y") %></p>
     </div>
 
+    <div class="jwt-info">
+      <h3>🔐 Your JWT Token</h3>
+      <p><small>Use this token for API authentication:</small></p>
+      <div class="token-container">
+        <textarea readonly class="jwt-token" id="jwtToken"><%= jwt_token %></textarea>
+        <button onclick="copyToken()" class="btn btn-outline-primary btn-sm">Copy Token</button>
+      </div>
+      <p><small>🕐 Expires: <%= 24.hours.from_now.strftime("%B %d, %Y at %I:%M %p") %></small></p>
+    </div>
+
+    <div class="api-info">
+      <h3>📡 API Endpoints</h3>
+      <ul class="api-list">
+        <li><strong>GET</strong> /api/dashboard - Your dashboard data</li>
+        <li><strong>GET</strong> /api/users - List all users</li>
+        <li><strong>GET</strong> /api/me - Your user information</li>
+        <li><strong>POST</strong> /api/login - Login with email/password</li>
+        <li><strong>POST</strong> /api/register - Create new account</li>
+        <li><strong>DELETE</strong> /api/logout - Logout</li>
+      </ul>
+      <p><small>💡 Use: <code>Authorization: Bearer YOUR_TOKEN</code></small></p>
+    </div>
+
     <div class="dashboard-actions">
+      <%= link_to "View All Users", users_path, class: "btn btn-primary" %>
       <%= button_to "Logout", logout_path, method: :delete, 
                     data: { confirm: "Are you sure you want to logout?" },
                     class: "btn btn-outline-danger" %>
     </div>
   </div>
+
+<script>
+function copyToken() {
+  const tokenElement = document.getElementById('jwtToken');
+  tokenElement.select();
+  tokenElement.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(tokenElement.value);
+  
+  // Show feedback
+  const button = document.querySelector('.token-container button');
+  const originalText = button.textContent;
+  button.textContent = '✓ Copied!';
+  button.style.color = '#28a745';
+  
+  setTimeout(() => {
+    button.textContent = originalText;
+    button.style.color = '';
+  }, 2000);
+}
+</script>
 </div>

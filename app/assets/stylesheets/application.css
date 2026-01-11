@@ -176,9 +176,150 @@ body {
   text-align: center;
 }
 
+.dashboard-actions .btn + .btn {
+  margin-left: 10px;
+}
+
+/* Users Table Styles */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: white;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.users-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.current-user-badge {
+  background-color: #007bff;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.status-active {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.no-users {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+/* JWT Token Styles */
+.jwt-info, .api-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.jwt-info h3, .api-info h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.token-container {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  margin: 10px 0;
+}
+
+.jwt-token {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  resize: none;
+  height: 60px;
+  background-color: #fff;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.api-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.api-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e9ecef;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+}
+
+.api-list li:last-child {
+  border-bottom: none;
+}
+
+.api-list strong {
+  color: #007bff;
+  font-weight: 600;
+  margin-right: 8px;
+  min-width: 60px;
+  display: inline-block;
+}
+
+code {
+  background-color: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+}
+
 @media (max-width: 480px) {
   .auth-container, .dashboard-container {
     margin: 20px;
     padding: 20px;
+  }
+  
+  .users-table {
+    font-size: 14px;
+  }
+  
+  .users-table th,
+  .users-table td {
+    padding: 8px 4px;
+  }
+
+  .token-container {
+    flex-direction: column;
+  }
+
+  .jwt-token {
+    height: 80px;
+  }
+
+  .api-list li {
+    font-size: 12px;
   }
 }

@@ -8,12 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: my_first_rails_app_development
+  database: auth_app_development
 
 test:
   <<: *default
-  database: my_first_rails_app_test
+  database: auth_app_test
 
 production:
   <<: *default
-  database: my_first_rails_app_production
+  database: auth_app_production
+  username: auth_app
+  password: <%= ENV['AUTH_APP_DATABASE_PASSWORD'] %>
